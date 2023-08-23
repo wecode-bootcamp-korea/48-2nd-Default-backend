@@ -15,10 +15,6 @@ CREATE TABLE rooms (
   constraint rooms_location_id_fk FOREIGN KEY (location_id) REFERENCES locations(id),
   constraint rooms_category_id_fk FOREIGN KEY (category_id) REFERENCES categories(id)
 );
-
-
-
-
 -- migrate:down
 
 DROP TABLE rooms;
