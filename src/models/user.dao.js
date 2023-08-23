@@ -17,4 +17,21 @@ const getUserByEmail = async (email) => {
   return user;
 };
 
-module.exports = { getUserByEmail };
+const createUser = async (name, email, password) => {
+  await AppDataSource.query(
+    `
+    INSERT INTO users (
+      name,
+      email,
+      password
+    ) VALUES (
+      ?,
+      ?,
+      ?
+    );
+    `,
+    [name, email, password]
+  );
+};
+
+module.exports = { getUserByEmail, createUser };
