@@ -8,7 +8,6 @@ CREATE TABLE rooms (
   location_id int,
   price int NOT NULL,
   category_id int NOT NULL,
-  start_time timestamp,
   created_at timestamp NOT NULL DEFAULT current_timestamp,
   updated_at timestamp null DEFAULT null on update current_timestamp,
   constraint rooms_user_id_fk FOREIGN KEY (user_id) REFERENCES users(id),
