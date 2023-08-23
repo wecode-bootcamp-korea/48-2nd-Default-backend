@@ -4,6 +4,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const { AppDataSource } = require("./src/models/data-source");
 const { routes } = require("./src/routes");
+const { globalErrorHandler } = require("./src/utilities/errorHandle");
 
 const app = express();
 
@@ -12,6 +13,8 @@ app.use(morgan("combined"));
 app.use(express.json());
 
 app.use(routes);
+
+app.use(globalErrorHandler);
 
 app.get("/ping", (req, res, next) => {
   res.status(200).json({ message: "pong" });
