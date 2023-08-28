@@ -2,8 +2,8 @@ const paymentService = require("../services/payment.service");
 const { catchAsync } = require("../utilities/errorHandle");
 
 const list = catchAsync(async (req, res) => {
-  const { room_id, start_date } = req.query;
-  const paymentList = await paymentService.paymentList(room_id, start_date);
+  const { roomId, startDate } = req.query;
+  const paymentList = await paymentService.paymentList(roomId, startDate);
 
   res.status(200).json(paymentList);
 });
