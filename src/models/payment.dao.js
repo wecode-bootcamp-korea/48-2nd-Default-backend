@@ -1,6 +1,12 @@
 const { AppDataSource } = require("./data-source");
 
-const paymentlist = async (roomId, startDate) => {
+const paymentlist = async (
+  userId,
+  roomId,
+  startDate,
+  offset = 1,
+  limit = 1
+) => {
   const list = await AppDataSource.query(
     `
     SELECT
