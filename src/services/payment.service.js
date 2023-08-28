@@ -1,7 +1,7 @@
 const paymentDao = require("../models/payment.dao");
 
-const paymentList = async (roomId, startDate) => {
-  return await paymentDao.paymentlist(roomId, startDate);
+const paymentList = async (userId, roomId, startDate) => {
+  return await paymentDao.paymentlist(userId, roomId, startDate);
 };
 
 module.exports = { paymentList };

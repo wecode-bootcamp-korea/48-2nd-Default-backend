@@ -25,9 +25,9 @@ const paymentlist = async (roomId, startDate) => {
       SELECT AVG(ratings) as ratings, room_id from room_reviews group by room_id
     ) rva
     on rva.room_id = r.id
-    WHERE u.id = 1 AND r.id = ? AND rs.start_date = ?;
+    WHERE u.id = ? AND r.id = ? AND rs.start_date = ?;
     `,
-    [roomId, startDate]
+    [userId, roomId, startDate]
   );
   return list;
 };
