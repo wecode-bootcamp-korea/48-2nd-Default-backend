@@ -1,30 +1,21 @@
-const { roomService } = require("../services");
+const roomService = require("../services/roomService");
 
-const getAllRooms = async (req, res) => {
+const getRoomList = async (req, res) => {
   const userId = req.user.id;
-  const rooms = roomService.getAllRooms(userId);
-
+  const { categoryId, locationId, page, limit, sortBy, minPrice, maxPrice } =
+    req.query;
+  const rooms = await roomService.getRoomList(
+    userId,
+    categoryId,
+    locationId,
+    page,
+    limit,
+    sortBy,
+    minPrice,
+    maxPrice
+  );
+  console.log(rooms);
   res.status(200).json({ data: rooms });
 };
 
-const getRoomsByCategory = async (req, res) => {
-  const { categoryId } = req.params;
-  const userId = req.user.id;
-  const rooms = roomService.getRoomsByCategory(categoryId, userId);
-
-  res.status(200).json({ data: rooms });
-};
-
-const getRoomsByRegion = async (req, res) => {
-  const { regionId } = req.params;
-  const userId = req.user.id;
-  const rooms = roomService.getRoomsByRegion(regionId, userId);
-
-  res.status(200).json({ data: rooms });
-};
-
-module.exports = {
-  getAllRooms,
-  getRoomsByCategory,
-  getRoomsByRegion,
-};
+module.exports = { getRoomList };
