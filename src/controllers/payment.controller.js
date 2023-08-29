@@ -15,5 +15,12 @@ const getPaymentList = catchAsync(async (req, res) => {
 
   res.status(200).json(paymentList);
 });
+const putPaid = catchAsync(async (req, res) => {
+  const { userId, roomId, startDate, price } = req.body;
+  // const user = req.user;
+  // const userId = user.id;
+  await paymentService.paid(userId, roomId, startDate, price);
 
-module.exports = { getPaymentList };
+  res.status(200).json({ message: "Pay Completed" });
+});
+module.exports = { getPaymentList, putPaid };
