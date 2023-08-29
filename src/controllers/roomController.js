@@ -1,6 +1,7 @@
 const roomService = require("../services/roomService");
+const { catchAsync } = require("../utilities/errorHandle");
 
-const getRoomList = async (req, res) => {
+const getRoomList = catchAsync(async (req, res) => {
   const userId = req.user.id;
   const { categoryId, locationId, page, limit, sortBy, minPrice, maxPrice } =
     req.query;
@@ -16,6 +17,6 @@ const getRoomList = async (req, res) => {
   );
   console.log(rooms);
   res.status(200).json({ data: rooms });
-};
+});
 
 module.exports = { getRoomList };
