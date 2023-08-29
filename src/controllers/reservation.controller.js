@@ -2,7 +2,7 @@ const { catchAsync } = require("../utilities/errorHandle");
 const reservationService = require("../services/reservation.service");
 
 
-const creatReservation = catchAsync (async (req, res) => { 
+const createReservation = catchAsync (async (req, res) => { 
     const {userId, roomId, startDate, endDate} = req.query;
     await reservationService.reservation(userId, roomId, startDate, endDate);
 
@@ -10,6 +10,6 @@ const creatReservation = catchAsync (async (req, res) => {
 
 })
 
-module.exports = { creatReservation };
+module.exports = { createReservation };
 
 
