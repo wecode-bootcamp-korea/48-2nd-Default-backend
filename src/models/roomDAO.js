@@ -47,7 +47,8 @@ const getRoomList = async (
       [userId, userId]
     );
     return data;
-  } catch {
+  } catch (err) {
+    console.log(err);
     const error = new Error("dataSource Error");
     error.statusCode = 400;
     throw error;

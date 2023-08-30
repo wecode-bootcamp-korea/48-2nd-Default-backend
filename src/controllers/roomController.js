@@ -2,7 +2,7 @@ const roomService = require("../services/roomService");
 const { catchAsync } = require("../utilities/errorHandle");
 
 const getRoomList = catchAsync(async (req, res) => {
-  const userId = req.user.id;
+  const userId = req.body.id;
   const { categoryId, locationId, page, limit, sortBy, minPrice, maxPrice } =
     req.query;
   const rooms = await roomService.getRoomList(

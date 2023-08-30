@@ -1,11 +1,14 @@
+const DEFAULT_LIMIT = 20;
+const DEFAULT_PAGE = 1;
+
 const filteringService = async (
   categoryId,
   locationId,
   minPrice,
   maxPrice,
   sortBy,
-  limit = 20,
-  page = 1
+  limit = DEFAULT_LIMIT,
+  page = DEFAULT_PAGE
 ) => {
   const getByCategory = async (categoryId) => {
     return `category_id = ${categoryId}`;
