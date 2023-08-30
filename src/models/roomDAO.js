@@ -1,5 +1,5 @@
 const { AppDataSource } = require("./data-source");
-const { filteringService } = require("../services/queryBuilder");
+const { filteringService } = require("./queryBuilder");
 
 const getRoomList = async (
   userId,
