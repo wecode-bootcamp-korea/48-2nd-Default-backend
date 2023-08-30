@@ -5,6 +5,6 @@ const reservationRouter = express.Router();
 
 const { loginRequired } = require("../utilities/auth");
 
-reservationRouter.post("/resevation", loginRequired, reservationController.createReservation);
+reservationRouter.post("", reservationController.createReservation);
 
 module.exports = { reservationRouter };
