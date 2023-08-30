@@ -1,5 +1,5 @@
 const { AppDataSource } = require("./data-source");
-const { filteringService } = require("./queryBuilder");
+const { createSqlQuery } = require("./queryBuilder");
 
 const getRoomList = async (
   userId,
@@ -13,7 +13,7 @@ const getRoomList = async (
 ) => {
   try {
     const { whereQuery, orderingQuery, priceRangeQuery, pageQuery } =
-      await filteringService(
+      await createSqlQuery(
         categoryId,
         locationId,
         page,

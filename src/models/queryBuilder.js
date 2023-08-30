@@ -1,7 +1,7 @@
 const DEFAULT_LIMIT = 20;
 const DEFAULT_PAGE = 1;
 
-const filteringService = async (
+const createSqlQuery = async (
   categoryId,
   locationId,
   minPrice,
@@ -62,5 +62,5 @@ const filteringService = async (
 };
 
 module.exports = {
-  filteringService,
+  createSqlQuery,
 };
