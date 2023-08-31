@@ -19,19 +19,24 @@ const createReservation = async(userId, roomId, startDate, endDate) => {
     );
 };
 
-const getExistingReservations = async(roomId) => {
-    const [reservationResult] = await AppDataSource.query (
+const getExistingReservations = async(roomId, userStartDate, userEndDate) => {
+    const reservationResult = await AppDataSource.query (
     `SELECT 
         start_date, 
         end_date 
     FROM 
         reservations 
     WHERE 
-        room_id = ?;
+        room_id = ?
+    WHERE
+        start_date     
+        
+    ;
     `,
     [roomId]
 )
 return reservationResult;
 };
 
-module.exports = { createReservation, getExistingReservations };
+
+module.exports = { createReservation, getExistingReservations};

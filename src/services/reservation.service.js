@@ -12,8 +12,9 @@ const createReservations = async(userId, roomId, startDate, endDate) => {
     };
 
     const { start_date, end_date } = checkReservationAvailability;
+
     
-    for (start_date of checkReservationAvailability) {
+    for (i = 1; i<=start_date&&i>=end_date; i++ ) {
         if (startDate < end_date && endDate > start_date) {
             const err = new Error("Invalid Date");
             err.statusCode = 400;
