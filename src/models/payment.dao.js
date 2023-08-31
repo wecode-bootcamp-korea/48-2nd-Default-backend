@@ -38,4 +38,57 @@ const paymentlist = async (
   return list;
 };
 
-module.exports = { paymentlist };
+const checkPrice = async (userId) => {
+  const [price] = await AppDataSource.query(
+    `
+    SELECT
+    u.point
+    FROM
+    users u
+    WHERE u.id = ?
+    `,
+    [userId]
+  );
+  return price;
+};
+
+const paid = async (userId, roomId, startDate, price) => {
+  const queryRunner = await AppDataSource.createQueryRunner();
+  await queryRunner.connect();
+  await queryRunner.startTransaction();
+  try {
+    await queryRunner.query(
+      `UPDATE
+    users
+    SET
+    point = point - ?
+    WHERE
+    id = ?`,
+      [price, userId]
+    );
+    await queryRunner.query(
+      `UPDATE
+    reservations
+    SET
+    is_paid = 1
+    WHERE
+    user_id = ?
+    AND room_id = ?
+    AND start_date = ?
+    `,
+      [userId, roomId, startDate]
+    );
+
+    await queryRunner.commitTransaction();
+  } catch (err) {
+    await queryRunner.rollbackTransaction();
+  } finally {
+    await queryRunner.release();
+  }
+};
+
+module.exports = {
+  paymentlist,
+  checkPrice,
+  paid,
+};
