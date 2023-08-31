@@ -23,12 +23,14 @@ const getDetail = async (roomId) => {
         ) AS imageUrl,
         d.name,
         E.name,
-        E.profile_image as profileImage
+        E.profile_image as profileImage,
+        F.location_name as locationName
     FROM
         rooms A
         LEFT JOIN room_amenities B ON a.id = b.room_id
         LEFT JOIN categories D ON a.category_id = d.id
         LEFT JOIN users E on a.user_id = E.id
+        LEFT JOIN locations F on a.location_id = f.id
     WHERE a.id =?;
    
      `, [roomId]
