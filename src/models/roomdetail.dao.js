@@ -39,7 +39,7 @@ const getDetail = async (roomId) => {
 const roomreview = async (roomId) => {
     return await AppDataSource.query(
         `
-    SELECT a.room_id, c.name, c.profile_image,a.content, a.ratings, a.created_at
+    SELECT a.room_id as roomId, c.name, c.profile_image as profileImage ,a.content, a.ratings, a.created_at as createdAt
 	FROM room_reviews a
 	LEFT JOIN rooms b ON a.room_id = b.id
 	LEFT JOIN users c ON a.user_id = c.id
@@ -54,8 +54,8 @@ const createreviews = async (user_id, room_id, content, ratings) => {
         `
          INSERT into room_reviews
          (
-            user_id,
-            room_id,
+            user_id as userId,
+            room_id as roomId,
             content,
             ratings)
 	     VALUES(?,
@@ -63,7 +63,7 @@ const createreviews = async (user_id, room_id, content, ratings) => {
             ?,
             ?)
         ` ,
-        [user_id, room_id, content, ratings]
+        [userId, roomId, content, ratings]
     );
 
 };

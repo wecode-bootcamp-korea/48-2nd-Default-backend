@@ -10,9 +10,8 @@ const roomreview = async (roomId) => {
   return review;
 }
 
-const createreviews = async (user_id, room_id, content, ratings) => {
-  await roomdetaildao.createreviews(user_id, room_id, content, ratings);
-  console.log(room_id);
+const createreviews = async (userId, roomId, content, ratings) => {
+  await roomdetaildao.createreviews(userId, roomId, content, ratings);
   return create;
 };
 

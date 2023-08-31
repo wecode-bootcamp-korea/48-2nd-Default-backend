@@ -15,9 +15,9 @@ const detailroom = await roomdetailService.detailroom(roomId);
 
 
 const createreviews = catchAsync(async (req, res) => {
-    const {user_id, content, ratings }= req.body;
-    const room_id = req.params.roomId
-     await roomdetailService.createreviews(user_id,room_id,content,ratings);
+    const {userId, content, ratings }= req.body;
+    const roomId = req.params.roomId
+     await roomdetailService.createreviews(userId,roomId,content,ratings);
     res.status(201).json({message : "review created"})
   });
 
