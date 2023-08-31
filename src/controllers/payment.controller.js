@@ -16,7 +16,7 @@ const getPaymentList = catchAsync(async (req, res) => {
   res.status(200).json(paymentList);
 });
 const putPaid = catchAsync(async (req, res) => {
-  const { roomId, startDate, price } = req.body;
+  const { roomId, startDate, price } = req.query;
   const user = req.user;
   const userId = user.id;
   await paymentService.paid(userId, roomId, startDate, price);
