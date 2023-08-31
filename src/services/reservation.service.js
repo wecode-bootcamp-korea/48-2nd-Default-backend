@@ -21,6 +21,7 @@ const reservationDao = require("../models/reservation.dao")
 
 const reservations =  async (userId, roomId, startDate, endDate) => {
     const reservationCheck = await reservationDao.getExistingReservations(roomId, startDate, endDate);
+    console.log(reservationCheck);
     const KST = 9 * 60 * 60 * 1000;
     const today = '2023-09-01';
     if(!reservationCheck) {
