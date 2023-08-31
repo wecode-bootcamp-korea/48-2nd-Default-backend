@@ -36,7 +36,7 @@ const getDetail = async (roomId) => {
 
 };
 
-const roomreview = async (roomId) => {
+const roomReview = async (roomId) => {
     return await AppDataSource.query(
         `
     SELECT a.room_id as roomId, c.name, c.profile_image as profileImage ,a.content, a.ratings, a.created_at as createdAt
@@ -49,7 +49,7 @@ const roomreview = async (roomId) => {
     );
 };
 
-const createreviews = async (user_id, room_id, content, ratings) => {
+const createReviews = async (userId, roomId, content, ratings) => {
     return await AppDataSource.query(
         `
          INSERT into room_reviews
@@ -68,4 +68,4 @@ const createreviews = async (user_id, room_id, content, ratings) => {
 
 };
 
-module.exports = { getDetail, roomreview, createreviews };
+module.exports = { getDetail, roomReview, createReviews };

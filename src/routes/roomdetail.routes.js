@@ -5,10 +5,10 @@ const detailRouter = express.Router();
 const roomdetailController = require("../controllers/roomdetail.controller");
 
 
-detailRouter.get("/getDetail/:roomId", roomdetailController.detailroom);
+detailRouter.get("/detail/:roomId", roomdetailController.detailroom);
 
-detailRouter.get("/getcontent/:roomId", roomdetailController.roomreview);
+detailRouter.get("/content/:roomId", roomdetailController.roomreview);
 
-detailRouter.post("/incontent/:roomId", roomdetailController.createreviews);
+detailRouter.post("/writing/:roomId", roomdetailController.createreviews);
 
 module.exports = { detailRouter };
