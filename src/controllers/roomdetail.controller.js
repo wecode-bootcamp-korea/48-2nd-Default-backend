@@ -2,7 +2,6 @@ const roomdetailService = require('../services/roomdetail.service');
 const { catchAsync } = require("../utilities/errorHandle");
 
 const detailroom =catchAsync(async (req, res) => {
-// get roomId frompath parameter 
 const roomId = req.params.roomId;
 const detailroom = await roomdetailService.detailroom(roomId);
   res.status(201).json(detailroom);

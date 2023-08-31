@@ -1,4 +1,3 @@
-
 const express = require("express");
 const detailRouter = express.Router();
 
@@ -10,6 +9,6 @@ detailRouter.get("/getDetail/:roomId", roomdetailController.detailroom);
 
 detailRouter.get("/getcontent/:roomId", roomdetailController.roomreview);
 
-detailRouter.post("/incontent/:roomId",roomdetailController.createreviews);
+detailRouter.post("/incontent/:roomId", roomdetailController.createreviews);
 
 module.exports = { detailRouter };

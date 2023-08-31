@@ -31,21 +31,21 @@ const getDetail = async (roomId) => {
         LEFT JOIN users E on a.user_id = E.id
     WHERE a.id =?;
    
-     `,[roomId]
+     `, [roomId]
     );
 
 };
 
 const roomreview = async (roomId) => {
     return await AppDataSource.query(
-    `
+        `
     SELECT a.room_id, c.name, c.profile_image,a.content, a.ratings, a.created_at
 	FROM room_reviews a
 	LEFT JOIN rooms b ON a.room_id = b.id
 	LEFT JOIN users c ON a.user_id = c.id
     WHERE a.room_id=?
 	ORDER BY a.created_at DESC;
-    `,[roomId]
+    `, [roomId]
     );
 };
 
@@ -63,7 +63,7 @@ const createreviews = async (user_id, room_id, content, ratings) => {
             ?,
             ?)
         ` ,
-        [user_id,room_id, content, ratings]
+        [user_id, room_id, content, ratings]
     );
 
 };
