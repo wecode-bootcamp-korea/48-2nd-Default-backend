@@ -34,4 +34,14 @@ const createUser = async (name, email, password) => {
   );
 };
 
-module.exports = { getUserByEmail, createUser };
+const getUserById = async (userId) => {
+  `SELECT
+    id
+  FROM
+    users
+  WHERE
+    id = ?`,
+    [userId];
+};
+
+module.exports = { getUserByEmail, createUser, getUserById };
