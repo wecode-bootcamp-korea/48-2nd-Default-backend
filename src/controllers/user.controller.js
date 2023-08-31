@@ -13,6 +13,6 @@ const signUp = catchAsync(async (req, res) => {
 
   await userService.signUp(name, email, password);
 
-  res.status(201).json("User created");
+  res.status(201).json({ message: "User created" });
 });
 module.exports = { signUp, signIn };
