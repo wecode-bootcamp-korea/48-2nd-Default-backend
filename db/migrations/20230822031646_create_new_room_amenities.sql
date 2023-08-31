@@ -12,9 +12,6 @@ CREATE TABLE room_amenities (
   amenities int,
  constraint room_amenities_romm_id_fk FOREIGN KEY (room_id) REFERENCES rooms (id)
 );
-
-
-
 -- migrate:down
 
 DROP TABLE room_amenities;
