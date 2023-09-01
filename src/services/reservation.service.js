@@ -3,7 +3,6 @@ const reservationDao = require("../models/reservation.dao")
 const reservations =  async (userId, roomId, startDate, endDate) => {
 
     const reservationCheck = await reservationDao.getExistingReservations(roomId, startDate, endDate);
-    console.log(reservationCheck)
     if(!reservationCheck) {
        await reservationDao.createReservation(userId, roomId, startDate, endDate); }
      else {

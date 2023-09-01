@@ -21,7 +21,8 @@ const createReservation = async(userId, roomId, startDate, endDate) => {
 
 const getExistingReservations = async(roomId, startDate, endDate) => {
     const [result] = await AppDataSource.query (
-      `   SELECT
+    `
+    SELECT
       id,
       start_date,
       end_date
@@ -33,7 +34,7 @@ const getExistingReservations = async(roomId, startDate, endDate) => {
         (start_date <= ? AND end_date >= ?) OR
         (start_date >= ? AND end_date <= ?)
       )
-      `,
+    `,
       [roomId, startDate, endDate, startDate, endDate]
     );
     return result;
