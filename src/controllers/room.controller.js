@@ -1,4 +1,4 @@
-const roomService = require("../services/roomService");
+const roomService = require("../services/room.service");
 const { catchAsync } = require("../utilities/errorHandle");
 
 const getRoomList = catchAsync(async (req, res) => {

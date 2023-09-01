@@ -4,7 +4,7 @@ const { paymentRouter } = require("./payment.router");
 const { reservationRouter } = require("./reservation.router");
 
 const routes = express.Router();
-const roomRouter = require("./roomRouter");
+const roomRouter = require("./room.router");
 const { detailRouter } = require("./roomdetail.routes");
 
 routes.use("/rooms", roomRouter);
