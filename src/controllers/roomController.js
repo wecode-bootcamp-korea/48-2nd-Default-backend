@@ -5,6 +5,7 @@ const getRoomList = catchAsync(async (req, res) => {
   const userId = req.user?.id;
   const { categoryId, locationId, page, limit, sortBy, minPrice, maxPrice } =
     req.query;
+  console.log(userId);
   const rooms = await roomService.getRoomList(
     userId,
     categoryId,
