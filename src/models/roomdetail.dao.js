@@ -13,8 +13,9 @@ const getDetail = async (roomId) => {
         b.guests_count as guestsCount,
         b.bedrooms_count as bedroomsCount,
         b.beds_count as bedsCount,
+        b.baths_count as bathroomsCount,
         b.wifi_boolean wifiBoolean,
-        b.air_conditioning_count as airConditioning,
+        b.air_conditioning_count as airConditioningCount,
         b.amenities,
         (
             SELECT JSON_ARRAYAGG(image_url)as imageUrl
@@ -56,8 +57,8 @@ const createReviews = async (userId, roomId, content, ratings) => {
         `
          INSERT into room_reviews
          (
-            user_id as userId,
-            room_id as roomId,
+            user_id,
+            room_id,
             content,
             ratings)
 	     VALUES(?,
@@ -71,3 +72,5 @@ const createReviews = async (userId, roomId, content, ratings) => {
 };
 
 module.exports = { getDetail, roomReview, createReviews };
+
+
