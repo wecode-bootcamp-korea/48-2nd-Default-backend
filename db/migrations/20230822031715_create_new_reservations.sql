@@ -9,9 +9,6 @@ CREATE TABLE reservations (
 constraint reservations_user_id_fk FOREIGN KEY (user_id) REFERENCES users (id),
 constraint reservations_room_id_fk FOREIGN KEY (room_id) REFERENCES rooms (id)
 );
-
-
-
 -- migrate:down
 
 DROP TABLE reservations;

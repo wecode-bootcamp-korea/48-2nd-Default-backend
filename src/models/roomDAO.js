@@ -18,7 +18,7 @@ const getRoomList = async (
         locationId,
         page,
         limit,
-        sortBy,
+        sortBys,
         minPrice,
         maxPrice
       );
