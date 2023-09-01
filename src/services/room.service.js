@@ -1,4 +1,4 @@
-const roomDao = require("../models/roomDao");
+const roomDao = require("../models/room.dao");
 
 const getRoomList = async (
   userId,
