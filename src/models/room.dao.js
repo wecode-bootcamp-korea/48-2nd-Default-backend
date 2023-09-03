@@ -30,8 +30,8 @@ const getRoomList = async (
         r.price,
         ra.beds_count,
         JSON_ARRAYAGG(i.image_url) AS images,
-        reviewCounts,
-        ratings,
+        rr.reviewCounts,
+        rr.ratings,
         (rl.id IS NOT NULL) as isLiked,
         COALESCE((r.user_id = ?),0) as isMyPost
       FROM rooms r
