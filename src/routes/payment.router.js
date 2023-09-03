@@ -5,6 +5,6 @@ const paymentRouter = express.Router();
 
 const { loginRequired } = require("../utilities/auth");
 
-paymentRouter.get("/list", loginRequired, paymentController.getPaymentList);
-paymentRouter.put("/paid", loginRequired, paymentController.putPaid);
+paymentRouter.get("/list", paymentController.getPaymentList);
+paymentRouter.put("/paid", paymentController.putPaid);
 module.exports = { paymentRouter };

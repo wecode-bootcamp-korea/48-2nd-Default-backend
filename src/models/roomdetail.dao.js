@@ -54,10 +54,11 @@ const createReviews = async (userId, roomId, content, ratings) => {
         `
          INSERT into room_reviews
          (
-            user_id as userId,
-            room_id as roomId,
+            user_id,
+            room_id,
             content,
-            ratings)
+            ratings
+            )
 	     VALUES(?,
             ?,
             ?,

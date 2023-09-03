@@ -1,18 +1,15 @@
 const roomdetaildao = require('../models/roomdetail.dao');
 
-const detailroom = async (roomId) => {
-  await roomdetaildao.getDetail(roomId)
-  return detail;
+const detailRoom = async (roomId) => {
+  return await roomdetaildao.getDetail(roomId)
 }
 
-const roomreview = async (roomId) => {
-  await roomdetaildao.roomreview(roomId)
-  return review;
+const roomReview = async (roomId) => {
+  return await roomdetaildao.roomReview(roomId)
 }
 
-const createreviews = async (userId, roomId, content, ratings) => {
-  await roomdetaildao.createreviews(userId, roomId, content, ratings);
-  return create;
+const createReview = async (userId, roomId, content, ratings) => {
+  return await roomdetaildao.createReviews(userId, roomId, content, ratings);
 };
 
-module.exports = { detailroom, roomreview, createreviews };
+module.exports = { detailRoom, roomReview, createReview };

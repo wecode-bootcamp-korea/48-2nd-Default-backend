@@ -16,11 +16,11 @@ const paymentlist = async (
     r.id,
     r.title,
     r.price,
-    r.thumb_nail,
+    r.thumb_nail as thumbNail,
     rva.ratings,
     rs.id,
-    rs.start_date,
-    rs.end_date
+    rs.start_date as startDate,
+    rs.end_date as endDate
     FROM
     reservations rs
     LEFT JOIN users u
@@ -39,7 +39,7 @@ const paymentlist = async (
 };
 
 const checkPrice = async (userId) => {
-  const [price] = await AppDataSource.query(
+  const price = await AppDataSource.query(
     `
     SELECT
     u.point
@@ -53,6 +53,7 @@ const checkPrice = async (userId) => {
 };
 
 const paid = async (userId, roomId, startDate, price) => {
+  
   const queryRunner = await AppDataSource.createQueryRunner();
   await queryRunner.connect();
   await queryRunner.startTransaction();
@@ -80,8 +81,11 @@ const paid = async (userId, roomId, startDate, price) => {
     );
 
     await queryRunner.commitTransaction();
-  } catch (err) {
+  } catch  {
+    const err = new Error("힝 속았지!")
+    err.statuscode = 400;
     await queryRunner.rollbackTransaction();
+    throw err;
   } finally {
     await queryRunner.release();
   }

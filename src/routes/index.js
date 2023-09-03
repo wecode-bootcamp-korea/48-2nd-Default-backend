@@ -5,13 +5,13 @@ const { reservationRouter } = require("./reservation.router");
 
 const routes = express.Router();
 const roomRouter = require("./room.router");
-const { detailRouter } = require("./roomdetail.routes");
+const { detailRouter } = require("./roomdetail.router");
 
 routes.use("/rooms", roomRouter);
 
 routes.use("/user", userRouter);
 routes.use("/reservation", reservationRouter);
 routes.use("/payment", paymentRouter);
-routes.use("/detail",detailRouter);
+routes.use("/room",detailRouter);
 
 module.exports = { routes };
